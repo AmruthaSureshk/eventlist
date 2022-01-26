@@ -45,55 +45,58 @@
         </div>
     </div>
 </div>
-
-<div class="container">
-    <div>
-        <p class="text-center my_search_text">You have searched for:<b>"{{query}}"</b></p>
+<section>
+    <div class="container">
+        <div>
+            <h2 style="color:black;">You have searched for:<b>"{{query}}"</b></h2>
+            <!--        <p class="text-center my_search_text">You have searched for:<b>"{{query}}"</b></p>-->
+        </div>
     </div>
-</div>
+</section>
+<br><br>
+<section>
+    <div class="container">
+        <div class="row">
+            {% for i in products %}
+
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
+                <div class="tm-home-box-2">
+                    <img src="{{i.img.url}}" alt="image" class="img-responsive">
+                    <p class="tm-banner-subtitle" style="color:black;text-align:center;">{{i.title}}</p>
+                    <h3>{{i.description}}</h3>
+                    <p class="tm-date">Start-{{i.startdate}}</p>
+                    <p class="tm-date">End-{{i.enddate}}</p>
+
+                    {% if i.paid is True %}
+                    <h3>paid</h3>
+                    {% else %}
+                    <h3>Do payment</h3>
+                    {% endif %}
+
+                    {% if i.published is True %}
+                    <p>Published</p>
+                    {% else %}
+                    <p>Not published</p>
+                    {% endif %}
 
 
-<div class="container">
-    <div class="row">
-        {% for i in products %}
-
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-            <div class="tm-home-box-2">
-                <img src="{{i.img.url}}" alt="image" class="img-responsive">
-                <p class="tm-banner-subtitle" style="color:black;text-align:center;">{{i.title}}</p>
-                <h3>{{i.description}}</h3>
-                <p class="tm-date">Start-{{i.startdate}}</p>
-                <p class="tm-date">End-{{i.enddate}}</p>
-
-                {% if i.paid is True %}
-                <h3>paid</h3>
-                {% else %}
-                <h3>Do payment</h3>
-                {% endif %}
-
-                {% if i.published is True %}
-                <p>Published</p>
-                {% else %}
-                <p>Not published</p>
-                {% endif %}
-
-
-                <div class="tm-home-box-2-container">
-                    <a href="#" class="tm-home-box-2-link"><i
-                            class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
-                    <span class="tm-home-box-2-description">{{i.location}}</span>
-                    <a href="#" class="tm-home-box-2-link"></a>
+                    <div class="tm-home-box-2-container">
+                        <a href="#" class="tm-home-box-2-link"><i
+                                class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
+                        <span class="tm-home-box-2-description">{{i.location}}</span>
+                        <a href="#" class="tm-home-box-2-link"></a>
+                    </div>
                 </div>
             </div>
+            {% empty %}
+            <div class="row mx_auto">
+                <p class="text-center my_search_text"> 0 results found</p>
+            </div>
+            {% endfor %}
         </div>
-        {% empty %}
-        <div class="row mx_auto">
-            <p class="text-center my_search_text"> 0 results found</p>
-        </div>
-        {% endfor %}
     </div>
-</div>
-</div>
+    </div>
+</section>
 
 <footer class="tm-black-bg">
     <div class="container">
